@@ -2648,6 +2648,16 @@ body {
   gap: 2rem;
 }
 
+.contact-single {
+  display: flex;
+  justify-content: center;
+}
+
+.contact-single .contact-card {
+  max-width: 400px;
+  width: 100%;
+}
+
 .contact-card {
   padding: 3rem 2rem;
   border: 1px solid rgba(255, 255, 255, 0.1);
