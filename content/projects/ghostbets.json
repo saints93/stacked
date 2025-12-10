@@ -1,0 +1,49 @@
+{
+  "name": "GHOSTBETS",
+  "slug": "ghostbets",
+  "published": true,
+  "featuredOnHomepage": true,
+  "homepageOrder": 1,
+  "heroImages": [
+    "/projects/ghostbets/logo-anim-1764254766214.webm",
+    "/projects/ghostbets/play-the-game-branding-guidelines-1764255287302.png"
+  ],
+  "galleryImages": [
+    "/projects/ghostbets/avatarcreation-1764241689408.png",
+    "/projects/ghostbets/icons-1764241694042.png",
+    "/projects/ghostbets/logotypes-1764241697030.png",
+    "/projects/ghostbets/photo-style-recommendations-1764241699583.png",
+    "/projects/ghostbets/ui-design-software-1764241703856.png",
+    "/projects/ghostbets/ui-design-vip-status-1764241705886.png",
+    "/projects/ghostbets/user-login-flow-1764241707803.png",
+    "/projects/ghostbets/website-landing-1764241710663.png",
+    "/projects/ghostbets/table-full-1764241763231.png"
+  ],
+  "mainImage": "/projects/ghostbets/logo-anim-1764254766214.webm",
+  "images": [
+    "/projects/ghostbets/avatarcreation-1764241689408.png",
+    "/projects/ghostbets/icons-1764241694042.png",
+    "/projects/ghostbets/logotypes-1764241697030.png",
+    "/projects/ghostbets/photo-style-recommendations-1764241699583.png",
+    "/projects/ghostbets/ui-design-software-1764241703856.png",
+    "/projects/ghostbets/ui-design-vip-status-1764241705886.png",
+    "/projects/ghostbets/user-login-flow-1764241707803.png",
+    "/projects/ghostbets/website-landing-1764241710663.png",
+    "/projects/ghostbets/table-full-1764241763231.png"
+  ],
+  "service": "Full",
+  "year": "2025",
+  "shortDescription": "Full branding and business consultancy + setup",
+  "overviewHtml": "<h3>Overview</h3>\n<p>Describe the project overview here...</p>",
+  "challengesHtml": "<h3>Challenges</h3>\n<p>Describe the challenges faced...</p>",
+  "websiteLink": "https://ghostbets.co",
+  "testimonial": {
+    "picture": "",
+    "name": "",
+    "subtitle": "",
+    "quote": ""
+  },
+  "nextProjectSlug": "",
+  "createdAt": "2025-11-27T11:09:26.498Z",
+  "updatedAt": "2025-11-27T14:55:21.964Z"
+}

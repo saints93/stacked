@@ -1,0 +1,55 @@
+{
+  "name": "SLEEPYHELLO",
+  "slug": "sleepyhello",
+  "published": true,
+  "featuredOnHomepage": true,
+  "homepageOrder": 1,
+  "heroImages": [
+    "/projects/sleepyhello/screenshot-1-1764504402187.png",
+    "/projects/sleepyhello/screenshot-10-1764504399116.png"
+  ],
+  "galleryImages": [
+    "/projects/sleepyhello/screenshot-4-1764285296359.png",
+    "/projects/sleepyhello/screenshot-3-1764285299752.png",
+    "/projects/sleepyhello/screenshot-1-1764285302817.png",
+    "/projects/sleepyhello/screenshot-5-1764285306661.png",
+    "/projects/sleepyhello/screenshot-5-1764285311381.png",
+    "/projects/sleepyhello/screenshot-6-1764285314517.png",
+    "/projects/sleepyhello/screenshot-7-1764285317577.png",
+    "/projects/sleepyhello/screenshot-8-1764285320769.png",
+    "/projects/sleepyhello/screenshot-10-1764285324132.png",
+    "/projects/sleepyhello/screenshot-12-1764285328879.png",
+    "/projects/sleepyhello/screenshot-13-1764285332549.png",
+    "/projects/sleepyhello/screenshot-7-1764285339806.png"
+  ],
+  "mainImage": "/projects/sleepyhello/screenshot-1-1764504402187.png",
+  "images": [
+    "/projects/sleepyhello/screenshot-4-1764285296359.png",
+    "/projects/sleepyhello/screenshot-3-1764285299752.png",
+    "/projects/sleepyhello/screenshot-1-1764285302817.png",
+    "/projects/sleepyhello/screenshot-5-1764285306661.png",
+    "/projects/sleepyhello/screenshot-5-1764285311381.png",
+    "/projects/sleepyhello/screenshot-6-1764285314517.png",
+    "/projects/sleepyhello/screenshot-7-1764285317577.png",
+    "/projects/sleepyhello/screenshot-8-1764285320769.png",
+    "/projects/sleepyhello/screenshot-10-1764285324132.png",
+    "/projects/sleepyhello/screenshot-12-1764285328879.png",
+    "/projects/sleepyhello/screenshot-13-1764285332549.png",
+    "/projects/sleepyhello/screenshot-7-1764285339806.png"
+  ],
+  "service": "",
+  "year": "2025",
+  "shortDescription": "",
+  "overviewHtml": "<h3>Overview</h3>\n<p>Describe the project overview here...</p>",
+  "challengesHtml": "<h3>Challenges</h3>\n<p>Describe the challenges faced...</p>",
+  "websiteLink": "",
+  "testimonial": {
+    "picture": "",
+    "name": "",
+    "subtitle": "",
+    "quote": ""
+  },
+  "nextProjectSlug": "",
+  "createdAt": "2025-11-27T23:15:42.464Z",
+  "updatedAt": "2025-11-30T12:06:44.452Z"
+}

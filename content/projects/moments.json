@@ -1,0 +1,48 @@
+{
+  "name": "Moments",
+  "slug": "moments",
+  "published": true,
+  "featuredOnHomepage": true,
+  "homepageOrder": 3,
+  "heroImages": [
+    "/projects/moments/whatsapp-video-2025-12-03-at-11-14-42-pm-1764791467940.mp4"
+  ],
+  "galleryImages": [
+    "/projects/moments/2cfac3209755101-68ed10a7660b8-1764790850890.webp",
+    "/projects/moments/3cfa27209755101-68ed10a7675e9-1764790859409.webp",
+    "/projects/moments/1-1764790862100.webp",
+    "/projects/moments/9c23f5209755101-68ee1b24c364e-1764790865538.webp",
+    "/projects/moments/386120209755101-68ed10a76a21d-1764790870421.webp",
+    "/projects/moments/78b491209755101-68ee1b24c2f7c-1764790873577.webp",
+    "/projects/moments/464e31209755101-68ed10a76582a-1764790876317.webp",
+    "/projects/moments/a5a633209755101-68ed10a7668ea-1764790879264.webp",
+    "/projects/moments/a51f87209755101-68ed10a76b31a-1764790881910.webp"
+  ],
+  "mainImage": "/projects/moments/whatsapp-video-2025-12-03-at-11-14-42-pm-1764791467940.mp4",
+  "images": [
+    "/projects/moments/2cfac3209755101-68ed10a7660b8-1764790850890.webp",
+    "/projects/moments/3cfa27209755101-68ed10a7675e9-1764790859409.webp",
+    "/projects/moments/1-1764790862100.webp",
+    "/projects/moments/9c23f5209755101-68ee1b24c364e-1764790865538.webp",
+    "/projects/moments/386120209755101-68ed10a76a21d-1764790870421.webp",
+    "/projects/moments/78b491209755101-68ee1b24c2f7c-1764790873577.webp",
+    "/projects/moments/464e31209755101-68ed10a76582a-1764790876317.webp",
+    "/projects/moments/a5a633209755101-68ed10a7668ea-1764790879264.webp",
+    "/projects/moments/a51f87209755101-68ed10a76b31a-1764790881910.webp"
+  ],
+  "service": "",
+  "year": "2025",
+  "shortDescription": "",
+  "overviewHtml": "<h3>Overview</h3>\n<p>Describe the project overview here...</p>",
+  "challengesHtml": "<h3>Challenges</h3>\n<p>Describe the challenges faced...</p>",
+  "websiteLink": "",
+  "testimonial": {
+    "picture": "",
+    "name": "",
+    "subtitle": "",
+    "quote": ""
+  },
+  "nextProjectSlug": "",
+  "createdAt": "2025-12-03T19:44:55.150Z",
+  "updatedAt": "2025-12-03T19:52:37.256Z"
+}

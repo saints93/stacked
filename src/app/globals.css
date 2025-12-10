@@ -1,8 +1,9 @@
 @import "tailwindcss";
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Match Webflow's dark theme */
+  --background: #0c0c0c; /* Webflow --black */
+  --foreground: #fdfdfd; /* Webflow --white */
 }
 
 @theme inline {
@@ -14,13 +15,1055 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+    /* Keep the same dark theme regardless of system preference */
+    --background: #0c0c0c;
+    --foreground: #fdfdfd;
   }
 }
 
+html,
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  background-color: #0c0c0c;
+}
+
+body {
+  background-color: #0c0c0c; /* or: background: var(--background); */
+  color: #fdfdfd;            /* or: color: var(--foreground); */
+  font-family: Inter, Arial, Helvetica, sans-serif;
+}
+
+/* Hero animation overrides */
+
+/* Ensure section-home-header can contain absolute positioned children */
+.section-home-header {
+  position: relative;
+  min-height: 100vh;
+  overflow: hidden;
+}
+
+/* Ensure header-image-wrapper fills the section */
+.section-home-header .header-image-wrapper {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100%;
+  height: 100%;
+  overflow: hidden;
+  z-index: 1 !important; /* Override Webflow's z-index: 10 */
+}
+
+/* Homepage project cards */
+.section-home-project .project-link-item {
+  position: relative;
+}
+
+.section-home-project .project-label {
+  position: absolute;
+  top: 1.5rem;
+  left: 1.5rem;
+  z-index: 5;
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  pointer-events: none; /* don’t block hover/click */
+}
+
+.section-home-project .project-label-name {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.18em;
+  color: #fdfdfd;
+}
+
+.section-home-project .project-label-service {
+  font-size: 0.7rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #b3b3b3;
+}
+
+/* Mobile optimization for project section */
+@media (max-width: 767px) {
+  .section-home-project .projects-component-grid {
+    grid-template-columns: 1fr !important;
+    gap: 2rem;
+  }
+  
+  .section-home-project .subtitle-sticky {
+    position: static;
+    margin-bottom: 1rem;
+  }
+  
+  .section-home-project .project-inner-grid {
+    grid-template-columns: 1fr !important;
+    gap: 1.5rem;
+  }
+  
+  .section-home-project .project-link-item {
+    display: block;
+    position: relative;
+    aspect-ratio: 4/3;
+    min-height: 280px;
+  }
+  
+  .section-home-project .project-content {
+    position: absolute;
+    inset: 0;
+  }
+  
+  .section-home-project .project-image-wrapper {
+    width: 100%;
+    height: 100%;
+  }
+  
+  .section-home-project .project-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
+  
+  .section-home-project .project-thumbnail-wrapper {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .section-home-project .project-thumbnail-block {
+    width: 55%;
+    height: auto;
+    aspect-ratio: 4/3;
+    max-width: 200px;
+  }
+  
+  .section-home-project .project-label {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    z-index: 10;
+  }
+  
+  .section-home-project .project-label-name {
+    font-size: 0.65rem;
+    letter-spacing: 0.15em;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  }
+  
+  .section-home-project .project-label-service {
+    font-size: 0.6rem;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
+  }
+  
+  .section-home-project .project-overlay {
+    background-color: rgba(12, 12, 12, 0.4);
+  }
+  
+  .section-home-project .button-wrapper {
+    margin-top: 1.5rem;
+  }
+}
+
+@media (max-width: 479px) {
+  .section-home-project .project-link-item {
+    min-height: 240px;
+  }
+  
+  .section-home-project .project-thumbnail-block {
+    width: 50%;
+    max-width: 160px;
+  }
+  
+  .section-home-project .project-label {
+    top: 0.75rem;
+    left: 0.75rem;
+  }
+  
+  .section-home-project .project-label-name {
+    font-size: 0.6rem;
+  }
+  
+  .section-home-project .project-label-service {
+    font-size: 0.55rem;
+  }
+}
+
+/* Gallery slider styles (moved from styled-jsx to avoid hydration issues) */
+.gallery-scroll-wrapper {
+  overflow: hidden;
+  padding: 1rem 0;
+}
+
+.gallery-scroll {
+  display: flex;
+  gap: 1rem;
+  will-change: transform;
+}
+
+.gallery-slide {
+  flex: 0 0 auto;
+  min-width: 260px;
+  max-width: 360px;
+  border: none;
+  padding: 0;
+  margin: 0;
+  background: transparent;
+  cursor: pointer;
+  scroll-snap-align: start;
+}
+
+@media (min-width: 1024px) {
+  .gallery-slide {
+    min-width: 360px;
+    max-width: 480px;
+  }
+}
+
+.gallery-image {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+  border-radius: 8px;
+  background: #111;
+}
+
+.gallery-slide:hover .gallery-image {
+  opacity: 0.9;
+}
+
+.gallery-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+}
+
+.gallery-modal-inner {
+  position: relative;
+  max-width: 90vw;
+  max-height: 90vh;
+  width: 100%;
+}
+
+.gallery-modal-media {
+  width: 100%;
+  height: 100%;
+}
+
+.gallery-modal-image {
+  width: 100%;
+  height: 100%;
+  max-height: 90vh;
+  object-fit: contain;
+  border-radius: 8px;
+  background: #000;
+}
+
+.gallery-modal-close {
+  position: absolute;
+  top: -2rem;
+  right: 0;
+  background: transparent;
+  border: 1px solid #555;
+  color: #fff;
+  width: 32px;
+  height: 32px;
+  border-radius: 999px;
+  cursor: pointer;
+  font-size: 1.25rem;
+  line-height: 1;
+}
+
+.gallery-modal-close:hover {
+  border-color: #fff;
+}
+
+/* Project detail layout & typography */
+
+.project-hero {
+  padding: 6rem 0 3rem;
+  background-color: #0c0c0c;
+  position: relative;
+  z-index: 1;
+}
+
+.project-hero-content {
+  display: flex;
+  justify-content: flex-start;
+}
+
+.project-hero-info {
+  max-width: 640px;
+}
+
+.project-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  color: #b3b3b3;
+  margin-bottom: 0.75rem;
+}
+
+.project-service {
+  font-weight: 500;
+}
+
+.project-divider {
+  opacity: 0.5;
+}
+
+.project-year {
+  opacity: 0.9;
+}
+
+.project-title {
+  font-size: clamp(2.5rem, 3vw + 1.5rem, 3.5rem);
+  line-height: 1.05;
+  margin: 0 0 0.75rem;
+  text-transform: uppercase;
+}
+
+.project-description {
+  max-width: 36rem;
+  margin: 0 0 1.5rem;
+  color: #d5d5d5;
+}
+
+.project-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+  color: #fdfdfd;
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  padding-bottom: 0.1rem;
+}
+
+.project-link:hover {
+  border-color: #fdfdfd;
+}
+
+/* Hero imagery */
+
+.project-main-image {
+  padding-bottom: 3rem;
+}
+
+.main-image-wrapper {
+  border-radius: 12px;
+  overflow: hidden;
+  background: #050505;
+}
+
+.main-image {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.secondary-hero-wrapper {
+  margin-top: 1.5rem;
+}
+
+.secondary-hero-image {
+  display: block;
+  width: 100%;
+  border-radius: 12px;
+  background: #050505;
+}
+
+/* Content sections */
+
+.project-section {
+  padding: 4rem 0;
+}
+
+.project-content-grid {
+  display: grid;
+  grid-template-columns: minmax(0, 0.35fr) minmax(0, 1fr);
+  column-gap: 3rem;
+  row-gap: 1.5rem;
+  align-items: flex-start;
+}
+
+.project-section-label {
+  color: #b3b3b3;
+}
+
+.section-indicator {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+}
+
+.indicator-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 999px;
+  background: #f2f2f2;
+}
+
+.project-section-content .rich-text {
+  max-width: 44rem;
+  line-height: 1.6;
+  color: #e5e5e5;
+}
+
+.project-section-content .rich-text h1,
+.project-section-content .rich-text h2,
+.project-section-content .rich-text h3 {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+  text-transform: uppercase;
+}
+
+.project-section-content .rich-text p {
+  margin-top: 0;
+  margin-bottom: 0.75rem;
+}
+
+/* Use main OVERVIEW / CHALLENGES heading with bullet, hide small side labels */
+.project-section-overview .project-section-label,
+.project-section-challenges .project-section-label {
+  display: none;
+}
+
+.project-section-overview .rich-text > h1:first-child,
+.project-section-overview .rich-text > h2:first-child,
+.project-section-challenges .rich-text > h1:first-child,
+.project-section-challenges .rich-text > h2:first-child {
+  position: relative;
+  padding-left: 1.75rem;
+  margin-bottom: 1rem;
+  font-size: clamp(2.3rem, 3vw + 1.2rem, 3rem);
+  letter-spacing: 0.18em;
+}
+
+.project-section-overview .rich-text > h1:first-child::before,
+.project-section-overview .rich-text > h2:first-child::before,
+.project-section-challenges .rich-text > h1:first-child::before,
+.project-section-challenges .rich-text > h2:first-child::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  top: 0.55em;
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  background: #f2f2f2;
+  transform: translateY(-50%);
+}
+
+/* Gallery */
+
+.project-gallery-horizontal {
+  padding: 4rem 0 3rem;
+}
+
+.gallery-header {
+  margin-bottom: 1.5rem;
+}
+
+/* Next project */
+
+.next-project {
+  padding: 4rem 0 5rem;
+}
+
+.divider-line {
+  height: 1px;
+  width: 100%;
+  background: #262626;
+  margin-bottom: 2rem;
+}
+
+.next-project-content {
+  display: flex;
+  align-items: flex-end;
+  gap: 1.5rem;
+}
+
+.next-label {
+  font-size: 0.8rem;
+  text-transform: uppercase;
+  letter-spacing: 0.14em;
+  color: #b3b3b3;
+}
+
+.next-project-link {
+  margin-left: auto;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: inherit;
+}
+
+.next-project-name {
+  font-size: 1.6rem;
+  text-transform: uppercase;
+  letter-spacing: 0.16em;
+}
+
+.next-project-arrow {
+  font-size: 1.4rem;
+  transform: translateY(2px);
+  transition: transform 150ms ease;
+}
+
+.next-project-link:hover .next-project-arrow {
+  transform: translate(4px, 2px);
+}
+
+/* Testimonial */
+
+.project-testimonial {
+  padding: 4rem 0 5rem;
+}
+
+.testimonial-wrapper {
+  max-width: 48rem;
+}
+
+.testimonial-quote {
+  margin-bottom: 1.5rem;
+}
+
+.quote-mark {
+  font-size: 2rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.quote-text {
+  font-size: 1rem;
+  line-height: 1.7;
+  color: #e5e5e5;
+}
+
+.testimonial-author {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.author-image {
+  width: 56px;
+  height: 56px;
+  border-radius: 999px;
+  object-fit: cover;
+}
+
+.author-name {
+  font-weight: 600;
+}
+
+.author-title {
+  font-size: 0.9rem;
+  color: #b3b3b3;
+}
+
+/* Responsive tweaks */
+
+@media (max-width: 991px) {
+  .project-hero {
+    padding-top: 5rem;
+  }
+
+  .project-content-grid {
+    grid-template-columns: minmax(0, 1fr);
+  }
+
+  .project-section-label {
+    margin-bottom: 0.75rem;
+  }
+
+  .next-project-content {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .next-project-link {
+    margin-left: 0;
+  }
+}
+
+@media (max-width: 767px) {
+  .project-hero {
+    padding-top: 4.5rem;
+    padding-bottom: 2.5rem;
+  }
+
+  .project-section {
+    padding: 3rem 0;
+  }
+
+  .project-main-image {
+    padding-bottom: 2.5rem;
+  }
+
+  .project-title {
+    font-size: 2.1rem;
+  }
+}
+
+/* ========================================
+   Hero Stack Animation - Custom Animation
+   ======================================== */
+
+.hero-stack-container {
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  pointer-events: none;
+  z-index: 5;
+  overflow: visible;
+}
+
+.hero-stack-images {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1500px;
+}
+
+/* Larger image sizes */
+.hero-stack-image {
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 180px;
+  height: 130px;
+  margin-left: -90px;
+  margin-top: -65px;
+  z-index: var(--z-index, 1);
+  opacity: 0;
+  transform: 
+    translate3d(var(--start-x, 0%), var(--start-y, 0%), 0)
+    rotate(var(--start-rotation, 0deg))
+    scale(0.6);
+  will-change: transform, opacity;
+}
+
+@media (min-width: 768px) {
+  .hero-stack-image {
+    width: 260px;
+    height: 190px;
+    margin-left: -130px;
+    margin-top: -95px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .hero-stack-image {
+    width: 340px;
+    height: 250px;
+    margin-left: -170px;
+    margin-top: -125px;
+  }
+}
+
+.hero-stack-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  border-radius: 12px;
+  box-shadow: 
+    0 15px 40px rgba(0, 0, 0, 0.5),
+    0 5px 15px rgba(0, 0, 0, 0.4);
+  transform-style: preserve-3d;
+}
+
+/* Phase: Stacking - images fly in and stack */
+.phase-stacking .hero-stack-image {
+  animation: stackFlyIn 0.7s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--delay, 0ms);
+}
+
+@keyframes stackFlyIn {
+  0% {
+    opacity: 0;
+    transform: 
+      translate3d(var(--start-x), var(--start-y), 150px)
+      rotate(var(--start-rotation))
+      scale(0.4);
+  }
+  50% {
+    opacity: 1;
+    transform: 
+      translate3d(
+        calc(var(--stack-x) * 0.5),
+        calc(var(--stack-y) - 30px),
+        80px
+      )
+      rotate(calc(var(--stack-rotation) * 0.3))
+      scale(1.08);
+  }
+  75% {
+    transform: 
+      translate3d(
+        var(--stack-x),
+        calc(var(--stack-y) + 8px),
+        20px
+      )
+      rotate(var(--stack-rotation))
+      scale(0.96);
+  }
+  100% {
+    opacity: 1;
+    transform: 
+      translate3d(var(--stack-x), var(--stack-y), 0)
+      rotate(var(--stack-rotation))
+      scale(1);
+  }
+}
+
+/* Phase: Stacked - brief hold with subtle float */
+.phase-stacked .hero-stack-image {
+  opacity: 1;
+  transform: 
+    translate3d(var(--stack-x), var(--stack-y), 0)
+    rotate(var(--stack-rotation))
+    scale(1);
+  animation: stackedFloat 1.5s ease-in-out infinite;
+}
+
+@keyframes stackedFloat {
+  0%, 100% {
+    transform: 
+      translate3d(var(--stack-x), var(--stack-y), 0)
+      rotate(var(--stack-rotation))
+      scale(1);
+  }
+  50% {
+    transform: 
+      translate3d(var(--stack-x), calc(var(--stack-y) - 5px), 8px)
+      rotate(calc(var(--stack-rotation) + 0.5deg))
+      scale(1.01);
+  }
+}
+
+/* Phase: Exploding - images burst outward */
+.phase-exploding .hero-stack-image {
+  animation: explodeOut 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94) forwards;
+}
+
+@keyframes explodeOut {
+  0% {
+    opacity: 1;
+    transform: 
+      translate3d(var(--stack-x), var(--stack-y), 0)
+      rotate(var(--stack-rotation))
+      scale(1);
+  }
+  40% {
+    transform: 
+      translate3d(
+        calc(var(--explode-x) * 0.3),
+        calc(var(--explode-y) * 0.3),
+        100px
+      )
+      rotate(calc(var(--explode-rotation) * 0.5))
+      scale(1.15);
+  }
+  100% {
+    opacity: 1;
+    transform: 
+      translate3d(var(--explode-x), var(--explode-y), 0)
+      rotate(var(--explode-rotation))
+      scale(var(--explode-scale));
+  }
+}
+
+/* Phase: Gallery - images spread around, gentle float */
+.phase-gallery .hero-stack-image {
+  opacity: 1;
+  transform: 
+    translate3d(var(--explode-x), var(--explode-y), 0)
+    rotate(var(--explode-rotation))
+    scale(var(--explode-scale));
+  animation: galleryFloat 3s ease-in-out infinite;
+  animation-delay: calc(var(--z-index) * 150ms);
+}
+
+@keyframes galleryFloat {
+  0%, 100% {
+    transform: 
+      translate3d(var(--explode-x), var(--explode-y), 0)
+      rotate(var(--explode-rotation))
+      scale(var(--explode-scale));
+  }
+  50% {
+    transform: 
+      translate3d(
+        calc(var(--explode-x) + 2%),
+        calc(var(--explode-y) - 3%),
+        15px
+      )
+      rotate(calc(var(--explode-rotation) + 2deg))
+      scale(calc(var(--explode-scale) * 1.02));
+  }
+}
+
+/* Phase: Fading - images fade out */
+.phase-fading .hero-stack-image {
+  animation: fadeOut 0.7s ease-out forwards;
+  animation-delay: calc(var(--z-index) * 50ms);
+}
+
+@keyframes fadeOut {
+  0% {
+    opacity: 1;
+    transform: 
+      translate3d(var(--explode-x), var(--explode-y), 0)
+      rotate(var(--explode-rotation))
+      scale(var(--explode-scale));
+  }
+  100% {
+    opacity: 0;
+    transform: 
+      translate3d(var(--explode-x), calc(var(--explode-y) + 10%), -50px)
+      rotate(calc(var(--explode-rotation) + 5deg))
+      scale(calc(var(--explode-scale) * 0.8));
+  }
+}
+
+/* Image border highlight effect */
+.hero-stack-image::before {
+  content: '';
+  position: absolute;
+  inset: -2px;
+  border-radius: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.15) 0%,
+    rgba(255, 255, 255, 0) 50%,
+    rgba(0, 0, 0, 0.25) 100%
+  );
+  opacity: 0;
+  transition: opacity 0.4s ease;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.phase-stacked .hero-stack-image::before,
+.phase-exploding .hero-stack-image::before,
+.phase-gallery .hero-stack-image::before {
+  opacity: 1;
+}
+
+/* Enhanced shadows during gallery phase */
+.phase-gallery .hero-stack-image img {
+  box-shadow: 
+    0 20px 50px rgba(0, 0, 0, 0.6),
+    0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+/* ========================================
+   Hero Gallery Wall - Isometric Grid Variation
+   ======================================== */
+
+.hero-gallery-wall {
+  position: absolute !important;
+  inset: 0 !important;
+  overflow: hidden !important;
+  z-index: 1 !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.gallery-wall-inner {
+  position: absolute !important;
+  top: 50% !important;
+  left: 50% !important;
+  /* Massive container to cover all viewport corners when rotated at -25deg */
+  width: 500vw !important;
+  height: 500vh !important;
+  transform: translate(-50%, -50%) rotate(-25deg) !important;
+  transform-origin: center center !important;
+  display: flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  visibility: visible !important;
+}
+
+.gallery-wall-grid {
+  display: flex !important;
+  flex-direction: column !important;
+  gap: 10px !important;
+  align-items: center !important;
+}
+
+.gallery-wall-row {
+  display: flex !important;
+  gap: 10px !important;
+  width: max-content !important;
+  flex-shrink: 0 !important;
+  will-change: transform !important;
+}
+
+/* Row animations - quadrupled content, animate 25% for seamless loop */
+.gallery-wall-row.row-even {
+  animation: scrollLeft 100s linear infinite !important;
+}
+
+.gallery-wall-row.row-odd {
+  animation: scrollRight 90s linear infinite !important;
+}
+
+/* Seamless infinite scroll with quadrupled content: start centered, move one quarter */
+@keyframes scrollLeft {
+  0% {
+    transform: translateX(-25%);
+  }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes scrollRight {
+  0% {
+    transform: translateX(-50%);
+  }
+  100% {
+    transform: translateX(-25%);
+  }
+}
+
+/* Mobile card sizes - visible immediately */
+.gallery-wall-card {
+  flex-shrink: 0 !important;
+  width: 120px !important;
+  height: 90px !important;
+  border-radius: 8px !important;
+  overflow: hidden !important;
+  opacity: 0.85 !important;
+  box-shadow: 
+    0 4px 15px rgba(0, 0, 0, 0.4),
+    0 2px 6px rgba(0, 0, 0, 0.3) !important;
+  display: block !important;
+  visibility: visible !important;
+}
+
+.gallery-wall-card img {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+}
+
+/* Overlay for text readability */
+.gallery-wall-overlay {
+  position: absolute !important;
+  inset: 0 !important;
+  background: radial-gradient(
+    ellipse at center,
+    rgba(12, 12, 12, 0.15) 0%,
+    rgba(12, 12, 12, 0.35) 30%,
+    rgba(12, 12, 12, 0.55) 60%,
+    rgba(12, 12, 12, 0.85) 100%
+  ) !important;
+  pointer-events: none !important;
+  z-index: 2 !important;
+}
+
+/* Tablet (768px+) */
+@media (min-width: 768px) {
+  .gallery-wall-grid {
+    gap: 12px !important;
+  }
+  
+  .gallery-wall-row {
+    gap: 12px !important;
+  }
+  
+  .gallery-wall-card {
+    width: 160px !important;
+    height: 120px !important;
+    border-radius: 10px !important;
+  }
+}
+
+/* Desktop (1024px+) */
+@media (min-width: 1024px) {
+  .gallery-wall-grid {
+    gap: 14px !important;
+  }
+  
+  .gallery-wall-row {
+    gap: 14px !important;
+  }
+  
+  .gallery-wall-card {
+    width: 220px !important;
+    height: 165px !important;
+    border-radius: 12px !important;
+  }
+}
+
+/* Large desktop (1280px+) */
+@media (min-width: 1280px) {
+  .gallery-wall-grid {
+    gap: 16px !important;
+  }
+  
+  .gallery-wall-row {
+    gap: 16px !important;
+  }
+  
+  .gallery-wall-card {
+    width: 280px !important;
+    height: 210px !important;
+  }
+}
+
+/* Extra large (1920px+) */
+@media (min-width: 1920px) {
+  .gallery-wall-card {
+    width: 340px !important;
+    height: 255px !important;
+  }
+  
+  .gallery-wall-grid {
+    gap: 18px !important;
+  }
+  
+  .gallery-wall-row {
+    gap: 18px !important;
+  }
+}
+
+/* Ensure hero text is above the gallery wall */
+.section-home-header .heading-wrapper {
+  position: relative;
+  z-index: 10;
+}
+
+.section-home-header .header-content-grid {
+  position: relative;
+  z-index: 10;
+}
+
+.section-home-header .header-opacity {
+  z-index: 5;
 }
