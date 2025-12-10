@@ -432,6 +432,96 @@ export default function ProjectForm({
           font-size: 0.75rem;
           color: #888;
         }
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+          .project-form {
+            max-width: 100%;
+          }
+          .form-section {
+            padding: 1rem;
+            margin-bottom: 1.5rem;
+          }
+          .form-section-title {
+            font-size: 0.9rem;
+          }
+          .form-row {
+            grid-template-columns: 1fr;
+            gap: 0;
+          }
+          .form-input,
+          .form-textarea,
+          .form-select {
+            font-size: 16px; /* Prevent iOS zoom */
+            padding: 0.65rem;
+          }
+          .form-textarea {
+            min-height: 100px;
+          }
+          .form-checkbox-group {
+            padding: 0.5rem 0;
+          }
+          .form-checkbox-label {
+            font-size: 0.8rem;
+          }
+          .image-item {
+            grid-template-columns: 1fr;
+            gap: 0.5rem;
+          }
+          .image-item .form-input {
+            width: 100%;
+          }
+          .image-item .image-upload-btn,
+          .image-item .remove-btn {
+            width: 100%;
+            padding: 0.6rem;
+            min-height: 44px;
+          }
+          .image-preview img {
+            max-width: 100%;
+            max-height: 200px;
+          }
+          .form-actions {
+            flex-direction: column;
+            gap: 0.75rem;
+          }
+          .submit-btn,
+          .cancel-btn {
+            width: 100%;
+            padding: 0.85rem 1rem;
+            text-align: center;
+            min-height: 48px;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .form-section {
+            padding: 0.85rem;
+            margin-bottom: 1.25rem;
+            border-radius: 6px;
+          }
+          .form-section-title {
+            font-size: 0.85rem;
+            margin-bottom: 0.75rem;
+          }
+          .form-label {
+            font-size: 0.7rem;
+          }
+          .form-input,
+          .form-textarea,
+          .form-select {
+            padding: 0.6rem;
+          }
+          .hint {
+            font-size: 0.65rem;
+          }
+          .hero-label {
+            font-size: 0.7rem;
+          }
+          .image-upload-btn {
+            font-size: 0.7rem;
+          }
+        }
       `}</style>
 
       <input

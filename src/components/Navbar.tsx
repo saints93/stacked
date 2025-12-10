@@ -2,9 +2,28 @@
 
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { useState, useEffect } from "react";
 
 export default function Navbar() {
   const pathname = usePathname();
+  const [isMenuOpen, setIsMenuOpen] = useState(false);
+
+  // Close menu when route changes
+  useEffect(() => {
+    setIsMenuOpen(false);
+  }, [pathname]);
+
+  // Prevent body scroll when menu is open
+  useEffect(() => {
+    if (isMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [isMenuOpen]);
 
   // Hide global marketing nav on admin routes
   if (pathname.startsWith("/admin")) {
@@ -26,6 +45,14 @@ export default function Navbar() {
       : baseClass;
   };
 
+  const toggleMenu = () => {
+    setIsMenuOpen(!isMenuOpen);
+  };
+
+  const closeMenu = () => {
+    setIsMenuOpen(false);
+  };
+
   return (
     <div
       id="top"
@@ -35,7 +62,7 @@ export default function Navbar() {
       data-easing="ease"
       data-easing2="ease"
       role="banner"
-      className="navbar w-nav"
+      className={`navbar w-nav ${isMenuOpen ? "w--open" : ""}`}
       suppressHydrationWarning
     >
       <div className="padding-global">
@@ -47,6 +74,7 @@ export default function Navbar() {
               data-w-id="016c42d0-27ae-d0d7-3914-01d3df01ab5e"
               aria-current={isActive("/") ? "page" : undefined}
               className={getLinkClass("/", "brand-link w-inline-block")}
+              onClick={closeMenu}
             >
               <div className="logo-wrap">
                 <img
@@ -68,9 +96,10 @@ export default function Navbar() {
                 role="navigation"
                 id="w-node-_016c42d0-27ae-d0d7-3914-01d3df01ab64-df01ab5a"
                 className="nav-menu w-nav-menu"
+                data-nav-menu-open={isMenuOpen ? "" : undefined}
                 suppressHydrationWarning
               >
-                <div className="background-navbar" />
+                <div className="background-navbar" onClick={closeMenu} />
                 <div className="nav-menu-content">
                   <div className="nav-link-overflow">
                     <Link
@@ -78,6 +107,7 @@ export default function Navbar() {
                       href="/"
                       aria-current={isActive("/") ? "page" : undefined}
                       className={getLinkClass("/", "nav-link w-inline-block")}
+                      onClick={closeMenu}
                     >
                       <div className="nav-text">Home</div>
                       <div className="nav-text is-hover">Home</div>
@@ -89,6 +119,7 @@ export default function Navbar() {
                       href="/about"
                       aria-current={isActive("/about") ? "page" : undefined}
                       className={getLinkClass("/about", "nav-link w-inline-block")}
+                      onClick={closeMenu}
                     >
                       <div className="nav-text">About</div>
                       <div className="nav-text is-hover">About</div>
@@ -100,6 +131,7 @@ export default function Navbar() {
                       href="/projects"
                       aria-current={isActive("/projects") ? "page" : undefined}
                       className={getLinkClass("/projects", "nav-link w-inline-block")}
+                      onClick={closeMenu}
                     >
                       <div className="nav-text">Projects</div>
                       <div className="nav-text is-hover">Projects</div>
@@ -111,6 +143,7 @@ export default function Navbar() {
                       href="/services"
                       aria-current={isActive("/services") ? "page" : undefined}
                       className={getLinkClass("/services", "nav-link w-inline-block")}
+                      onClick={closeMenu}
                     >
                       <div className="nav-text">Services</div>
                       <div className="nav-text is-hover">Services</div>
@@ -122,6 +155,7 @@ export default function Navbar() {
                       href="/contact"
                       aria-current={isActive("/contact") ? "page" : undefined}
                       className={getLinkClass("/contact", "nav-link w-inline-block")}
+                      onClick={closeMenu}
                     >
                       <div className="nav-text">Contact</div>
                       <div className="nav-text is-hover">Contact</div>
@@ -129,10 +163,14 @@ export default function Navbar() {
                   </div>
                 </div>
               </nav>
-              <div
+              <button
+                type="button"
                 id="w-node-_016c42d0-27ae-d0d7-3914-01d3df01ab7a-df01ab5a"
                 data-w-id="016c42d0-27ae-d0d7-3914-01d3df01ab7a"
-                className="menu-button w-nav-button"
+                className={`menu-button w-nav-button ${isMenuOpen ? "w--open" : ""}`}
+                onClick={toggleMenu}
+                aria-label={isMenuOpen ? "Close menu" : "Open menu"}
+                aria-expanded={isMenuOpen}
                 suppressHydrationWarning
               >
                 <div className="menu-wrapper">
@@ -147,7 +185,7 @@ export default function Navbar() {
                     <div className="menu-dot vertical" />
                   </div>
                 </div>
-              </div>
+              </button>
             </div>
           </div>
         </div>

@@ -164,6 +164,41 @@ export default function EditProjectPage() {
         .back-link:hover {
           color: #fff;
         }
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+          .admin-container {
+            padding: 1.5rem 1rem;
+          }
+          .admin-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+          }
+          .admin-title {
+            font-size: 1.25rem;
+          }
+          .admin-subtitle {
+            font-size: 0.8rem;
+          }
+          .back-link {
+            font-size: 0.8rem;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .admin-container {
+            padding: 1rem 0.75rem;
+          }
+          .admin-title {
+            font-size: 1.1rem;
+          }
+          .admin-subtitle {
+            font-size: 0.75rem;
+          }
+          .back-link {
+            font-size: 0.75rem;
+          }
+        }
       `}</style>
 
       <Link href="/admin" className="back-link">

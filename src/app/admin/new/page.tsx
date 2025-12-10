@@ -62,6 +62,35 @@ export default function NewProjectPage() {
           color: #666;
           padding: 2rem;
         }
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+          .admin-container {
+            padding: 1.5rem 1rem;
+          }
+          .admin-header {
+            margin-bottom: 1.5rem;
+            padding-bottom: 0.75rem;
+          }
+          .admin-title {
+            font-size: 1.25rem;
+          }
+          .back-link {
+            font-size: 0.8rem;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .admin-container {
+            padding: 1rem 0.75rem;
+          }
+          .admin-title {
+            font-size: 1.1rem;
+          }
+          .back-link {
+            font-size: 0.75rem;
+          }
+        }
       `}</style>
 
       <Link href="/admin" className="back-link">

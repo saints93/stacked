@@ -290,6 +290,92 @@ export default function AdminDashboard() {
             margin-right: auto;
           }
         }
+        
+        /* Mobile responsive styles */
+        @media (max-width: 768px) {
+          .admin-container {
+            padding: 1.5rem 1rem 2rem;
+          }
+          .admin-header {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 1rem;
+          }
+          .admin-title {
+            font-size: 1.25rem;
+          }
+          .admin-btn {
+            width: 100%;
+            text-align: center;
+            padding: 0.65rem 1rem;
+          }
+          .project-card {
+            grid-template-columns: 1fr;
+            gap: 0.75rem;
+            padding: 1rem;
+          }
+          .project-thumbnail {
+            width: 100%;
+            height: 140px;
+            border-radius: 6px;
+          }
+          .project-info {
+            width: 100%;
+          }
+          .project-name {
+            font-size: 0.95rem;
+            white-space: normal;
+          }
+          .project-meta {
+            flex-wrap: wrap;
+            gap: 0.5rem 1rem;
+            font-size: 0.7rem;
+          }
+          .project-actions {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 0.5rem;
+          }
+          .admin-btn-small {
+            padding: 0.5rem 0.75rem;
+            font-size: 0.65rem;
+            text-align: center;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+          }
+        }
+        
+        @media (max-width: 480px) {
+          .admin-container {
+            padding: 1rem 0.75rem 1.5rem;
+          }
+          .admin-title {
+            font-size: 1.1rem;
+          }
+          .admin-subtitle {
+            font-size: 0.75rem;
+          }
+          .project-thumbnail {
+            height: 120px;
+          }
+          .project-name {
+            font-size: 0.875rem;
+          }
+          .project-meta {
+            font-size: 0.65rem;
+          }
+          .project-status {
+            font-size: 0.65rem;
+            padding: 0.2rem 0.4rem;
+          }
+          .admin-btn-small {
+            font-size: 0.6rem;
+            padding: 0.45rem 0.5rem;
+          }
+        }
       `}</style>
 
       <Link href="/" className="back-link">
